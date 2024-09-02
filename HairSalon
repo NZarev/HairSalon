@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class HairSalon {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int target = Integer.parseInt(scanner.nextLine());
+        int totalEarnings = 0;
+
+        while (totalEarnings < target) {
+            String service = scanner.nextLine();
+            if (service.equals("closed")) {
+                break;
+            }
+
+            if (service.equals("haircut")) {
+                String type = scanner.nextLine();
+                switch (type) {
+                    case "mens":
+                        totalEarnings += 15;
+                        break;
+                    case "ladies":
+                        totalEarnings += 20;
+                        break;
+                    case "kids":
+                        totalEarnings += 10;
+                        break;
+                }
+            } else if (service.equals("color")) {
+                String type = scanner.nextLine();
+                switch (type) {
+                    case "touch up":
+                        totalEarnings += 20;
+                        break;
+                    case "full color":
+                        totalEarnings += 30;
+                        break;
+                }
+            }
+        }
+
+        if (totalEarnings >= target) {
+            System.out.println("You have reached your target for the day!");
+        } else {
+            System.out.printf("Target not reached! You need %dlv. more.%n", target - totalEarnings);
+        }
+
+        System.out.printf("Earned money: %dlv.%n", totalEarnings);
+    }
+}
